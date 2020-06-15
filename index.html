@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js"
+    integrity="sha256-+Q/z/qVOexByW1Wpv81lTLvntnZQVYppIL1lBdhtIq0=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <title>Frontend Mentor | Rock, Paper, Scissors, Lizard, Spock</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="game-panel">
+      <div class="game-name">
+        <img src="images/logo-bonus.svg" alt="logo-bonus">
+      </div>
+      <div class="game-score">
+        <p>score</p>
+        <span class="game-summary">0</span>
+      </div>
+    </div>
+  </header>
+  <section class="game-choises">
+    <div class="game-group-btns">
+      <button data-choise="rock" class="rock circle-btn"></button>
+      <button data-choise="paper" class="paper circle-btn"></button>
+      <button data-choise="scissors" class="scissors circle-btn"></button>
+      <button data-choise="lizard" class="lizard circle-btn"></button>
+      <button data-choise="spock" class="spock circle-btn"></button>
+      <div class="game-choises-bg">
+        <img src="images/bg-pentagon.svg" alt="bg-pentagon">
+      </div>
+    </div>
+  </section>
+  <section class="game-result">
+    <div class="player-or-ai">
+      <div class="player">
+        <p>You Picked</p>
+      </div>
+      <div class="ai">
+        <p>The House Picked</p>
+      </div>
+      <div class="who-win">
+        <p></p>
+      </div>
+    </div>
+    </div>
+  </section>
+  <section class="game-rules">
+    <div class="rules">
+      <h2>RULES</h2>
+      <div class="rules-img">
+        <img src="images/image-rules-bonus.svg" alt="game-rules">
+      </div>
+      <button class="game-rules-close_btn">
+        <span class="fas fa-times"></span>
+      </button>
+    </div>
+    <button class="game-rules-open_btn">Rules</button>
+  </section>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">TomaszW94</a>.
+  </div>
+  <script src="scripts/main.js"></script>
+</body>
+
+</html>

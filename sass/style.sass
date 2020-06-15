@@ -1,0 +1,444 @@
+@import reset
+//-----variables
+//Natural
+$bgColor: radial-gradient(circle,hsl(214, 47%, 23%),hsl(237, 49%, 15%))
+$darkText: hsl(229, 25%, 31%)
+$scoreText: hsl(229, 64%, 46%)
+$headerOutline: hsl(217, 16%, 45%)
+//Primary
+$scissorsColor: #ec9e0e
+$paperColor: #4865f4
+$rockColor: #dc2e4e
+$lizardColor: #834fe3
+$cyanSpock: #40b9ce
+   
+html
+    font-family: 'Barlow Semi Condensed', sans-serif
+body
+    background-image: $bgColor
+    display: flex
+    flex-direction: column
+    height: 100vh
+    width: 90%
+    margin: 0 auto
+    overflow-x: hidden
+
+.header
+    display: flex
+    justify-content: center  
+    .game-panel
+        display: flex
+        justify-content: space-between
+        align-items: center
+        border: 3px solid $headerOutline
+        min-width: 90vw
+        margin: 1rem 0
+        padding: 1rem
+        border-radius: 0.5rem
+        min-height: 15vh
+    .game-name
+        img
+            height: 10vh
+    .game-score
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        background: white
+        min-height: 100%
+        min-height: 90%
+        width: 4.5rem
+        border-radius: 0.3rem
+        padding: 0.3rem
+        p
+            color: $scoreText
+            text-transform: uppercase
+            font-weight: 600
+            font-size: 0.8rem
+        .game-summary
+            font-size: 1.8rem
+            font-weight: 600
+
+.game-choises
+    margin: 2rem 0
+    display: flex
+    justify-content: center
+    flex-direction: column
+    align-items: center
+    height: 100vh
+    .game-group-btns
+        display: inline-flex
+        position: relative
+    .game-choises-bg
+        img
+            height: 30vh
+
+.circle-btn
+    height: 11vh
+    width: 11vh
+    border-radius: 50%
+    cursor: pointer
+    box-shadow: 0 2px 20px #333
+    transition: opacity .5s ease
+    border: 8px solid
+.circle-btn:hover
+    opacity: 0.55
+.rock
+    border-radius: 50%
+    cursor: pointer
+    box-shadow: 0 2px 20px #333
+    background: url('../images/icon-rock.svg')
+    background-repeat: no-repeat
+    background-size: 3.5vh
+    background-position: center
+    background-color: white
+    border-color: $rockColor
+    position: absolute
+    top: 70%
+    right: 0
+.paper
+    background: url('../images/icon-paper.svg')
+    background-repeat: no-repeat
+    background-size: 3.5vh
+    background-position: center
+    background-color: white
+    border-color: $paperColor
+    position: absolute
+    bottom: 50%
+    left: 95%
+    transform: translate(-50%)
+.scissors
+    background: url('../images/icon-scissors.svg')
+    background-repeat: no-repeat
+    background-size: 3.5vh
+    background-position: center
+    background-color: white
+    border-color: $scissorsColor
+    position: absolute
+    bottom: 62%
+    left: 50%
+    transform: translate(-50%,-50%)
+.lizard
+    background: url('../images/icon-lizard.svg')
+    background-repeat: no-repeat
+    background-size: 3.5vh
+    background-position: center
+    background-color: white
+    border-color: $lizardColor
+    position: absolute
+    top: 70%
+    left: 0
+.spock
+    background: url('../images/icon-spock.svg')
+    background-repeat: no-repeat
+    background-size: 3.5vh
+    background-position: center
+    background-color: white
+    border-color: $cyanSpock
+    position: absolute
+    bottom: 50%
+    left: 5%
+    transform: translateX(-50%)
+
+.game-rules
+    display: flex
+    flex-direction: column
+    justify-content: center
+    margin: 1rem 0
+    align-items: center
+    .rules
+        display: flex
+        visibility: hidden
+        position: fixed
+        flex-direction: column
+        justify-content: space-around
+        align-items: center
+        top: 50%
+        left: 50%
+        transform: translate(-50%,-50%)
+        background-color: white
+        height: 100%
+        width: 100%
+        opacity: 0
+        transition: opacity .4s ease
+    .active
+        display: flex
+        visibility: visible
+        opacity: 1
+    .game-rules-open_btn
+        padding: 0.5rem 2.5rem
+        font-family: 'Barlow Semi Condensed'
+        background: none
+        color: #b9b9b9
+        text-transform: uppercase
+        border : 2px solid #b9b9b9
+        border-radius: 8px
+        font-size: 1rem
+        font-weight: 600
+        letter-spacing: 2px
+        box-shadow: 0 0 10px #111111
+        cursor: pointer
+    .game-rules-close_btn
+        border: none
+        background: transparent
+    h2
+        color: $headerOutline
+        letter-spacing: 1.2px
+        font-weight: 800
+        font-size: 1.8rem
+        opacity: 0.8
+ 
+.fa-times
+    font-size: 1.8rem
+    color: $headerOutline
+    cursor: pointer
+    opacity: 0.5
+
+.game-result
+    display: none
+    height: 100vh
+    flex-direction: column
+    justify-content: center  
+    .player-or-ai
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        flex-wrap: wrap
+        color: white
+        align-items: center
+        margin: 2rem 0
+        .player
+            display: flex
+            flex: 1
+            position: sticky
+            flex-direction: column
+            p
+                order: 2
+                text-align: center
+                margin: 1rem 0
+        .circle-btn
+            order: 1
+            display: flex
+            position: static
+            margin: 0 auto
+            cursor: auto
+            opacity: 1
+            height: 18vh
+            width: 18vh
+            border-width: 13px
+            background-size: 5.5vh
+            pointer-events: none
+        .ai
+            display: flex
+            flex: 1
+            flex-direction: column
+            p
+                order: 2
+                text-align: center
+                margin: 1rem 0
+            .circle-btn
+                order: 1
+                display: flex
+                position: static
+                margin: 0 auto
+                opacity: 1
+                cursor: auto
+                height: 18vh
+                width: 18vh
+                border-width: 13px
+                background-size: 5.5vh
+                pointer-events: none
+            .shadow
+                opacity: 0.1
+                border: none
+        .winner
+            box-shadow: 0px 0px 0px 20px #ffffff0a,
+            0px 0px 0px 40px #ffffff0a,
+            0px 0px 0px 75px #ffffff0a
+    .who-win
+        display: flex
+        flex-direction: column
+        align-items: center
+        width: 100%
+        p
+            font-size: 2.5rem
+            text-align: center
+            color: white
+            font-weight: 600
+            text-transform: uppercase
+        button
+            padding: 0.5rem 2rem
+            margin-top: 1rem
+            text-transform: uppercase
+            color: $darkText
+            background-color: white
+            border-radius: 8px
+            border: none
+            font-weight: 600
+            font-size: 1rem
+            letter-spacing: 3px
+            border-color: none
+            box-shadow: 0 0 3px white
+            font-family: 'Barlow Semi Condensed'
+            cursor: pointer
+.attribution
+    color: white
+    font-size: 0.8rem
+    margin: 1rem auto
+    display: block
+
+    a 
+        color: #ff3d3d
+//Small devices (landscape phones, 576px and up)
+@media (min-width: 576px)
+    .header
+        .game-name 
+            img 
+                height: 20vh
+    .game-choises
+        margin: 1.2rem
+    .game-result
+        .player-or-ai
+            margin: 2rem 0
+            .player
+                flex-basis: 50%
+                p
+                    margin: 1rem 0
+            .ai
+                flex-basis: 50%
+                p
+                    margin: 1rem 0
+//Iphone X
+@media only screen and (min-device-width: 375px) and (min-device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)
+    .game-choises
+        .game-group-btns
+        .circle-btn
+            border-width: 8px
+    .game-result
+        .player-or-ai
+            .player
+                p
+                    font-size: 1.2rem
+                .circle-btn
+                    width: 15vh
+                    height: 15vh
+                    border-width: 0.9rem
+            .ai
+                p
+                    font-size: 1.2rem
+                .circle-btn
+                    width: 15vh
+                    height: 15vh
+                    border-width: 0.9rem
+//Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint
+@media (min-width: 768px)
+    .header
+        .game-name 
+            img 
+                height: 13vh
+        .game-score
+            min-width: 8rem
+            p
+                font-size: 1.2rem
+            .game-summary
+                font-size: 3rem
+    .game-choises
+        .game-group-btns
+        .circle-btn
+            border-width: 8px
+    .game-result
+        .player-or-ai
+            .player
+                p
+                    order: 1
+                    font-size: 1.5rem
+                .circle-btn
+                    border-width: 8px
+            .ai
+                p
+                    order: 1
+                    font-size: 1.5rem
+                .circle-btn
+                    border-width: 8px
+        .who-win
+            p
+                font-size: 5.5rem
+            button
+                font-size: 1.3rem
+                padding: 1rem 2rem
+    .game-rules 
+        .game-rules-open_btn
+            font-size: 1.5rem
+    .attribution
+        font-size: 1.5rem
+//Large devices (desktops, 992px and up)
+@media (min-width: 992px)
+    .header
+    .game-choises
+        .game-group-btns
+            button
+                border-width: 5px
+    .game-result
+        .player-or-ai
+            .player
+                order: 3
+            .ai
+                order: 3
+//Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px)
+    .header
+        .game-panel
+            min-width: 50vw
+    .game-choises
+        .game-group-btns
+            button
+                border-width: 15px
+    .game-result
+        align-items: center
+        justify-content: center
+        .player-or-ai
+            flex-wrap: nowrap
+            .player
+                margin: 0 2rem
+                order: 2
+                p
+                    font-size: 1.5rem
+                .circle-btn
+                    border-width: 25px
+                    height: 30vh
+                    width: 30vh
+                    background-size: 13vh
+            .ai
+                order: 3
+                margin: 0 2rem
+                p
+                    font-size: 1.5rem
+                .circle-btn
+                    border-width: 25px
+                    height: 30vh
+                    width: 30vh
+                    background-size: 13vh
+            .winner
+                box-shadow: 0px 0px 0px 45px #ffffff0a,0px 0px 0px 100px #ffffff0a,0px 0px 0px 180px #ffffff0a
+        .who-win
+            order: 2
+            button
+                transition: box-shadow .4s ease
+            button:hover
+                box-shadow: 0 0 30px white
+    .game-rules
+        .rules
+            padding: 3rem
+            border-radius: 8px
+            width: auto
+            height: auto
+            h2
+                position: absolute
+                top: 5%
+                left: 5%
+            .game-rules-close_btn
+                position: absolute
+                top: 5%
+                right: 5%
+                img
+                    height: 20%
